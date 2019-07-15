@@ -1,8 +1,3 @@
-# 使用方式
-将target为electron的ant design pro项目run build后，放入到ant文件夹内，执行npm run dist即可打包
-注意：修改图标在build/icons内
-
-
 # electron-quick-start
 
 **Clone and run for a quick way to see Electron in action.**

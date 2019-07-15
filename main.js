@@ -1,5 +1,5 @@
 // Modules to control application life and create native browser window
-const { app, BrowserWindow, net } = require('electron')
+const { app, BrowserWindow, net, Menu } = require('electron')
 const path = require('path')
 
 // Keep a global reference of the window object, if you don't, the window will
@@ -13,12 +13,14 @@ function createWindow() {
     // height: 600,
     width: 1800,
     height: 1000,
+    icon: 'build/icons/favicon.png',
     webPreferences: {
       nodeIntegration: true,
       webSecurity: false,
       // allowRunningInsecureContent: true
-    }
+    },
   })
+  Menu.setApplicationMenu(null)
 
   // and load the index.html of the app.
   //mainWindow.loadFile('index.html')
@@ -29,7 +31,6 @@ function createWindow() {
   // mainWindow.loadURL(path.join('file://', __dirname, '../pEnsonHeatEvalWeb/dist/index.html'))
   mainWindow.loadURL(path.join('file://', __dirname, 'ant/index.html'))
   // mainWindow.webContents.openDevTools()
-
 
   // Open the DevTools.
   // mainWindow.webContents.openDevTools()

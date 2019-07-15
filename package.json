@@ -1,6 +1,6 @@
 {
   "name": "enson",
-  "version": "1.0.0rc1",
+  "version": "1.0.0rc3",
   "description": "A minimal Electron application",
   "main": "main.js",
   "scripts": {
@@ -16,17 +16,31 @@
     "tutorial",
     "demo"
   ],
-  "author": "GitHub",
+  "author": "菱歌科技",
   "license": "CC0-1.0",
   "devDependencies": {
-    "electron": "^5.0.0"
+    "electron": "^5.0.0",
+    "electron-builder": "^21.0.15"
   },
   "build": {
     "appId": "enson-alpha",
-    "productName": "xx系统",
+    "productName": "爱能森供暖评估系统",
     "win": {
-      "target": "msi",
-      "icon": "build/icons/favicon.ico"
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64",
+            "ia32"
+          ]
+        }
+      ],
+      "icon": "build/icons/favicon.png"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "perMachine": false
     }
   }
 }
