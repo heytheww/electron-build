@@ -16,7 +16,7 @@
     "tutorial",
     "demo"
   ],
-  "author": "菱歌科技",
+  "author": "xx科技",
   "license": "CC0-1.0",
   "devDependencies": {
     "electron": "^5.0.0",
@@ -24,7 +24,7 @@
   },
   "build": {
     "appId": "enson-alpha",
-    "productName": "爱能森供暖评估系统",
+    "productName": "xxx系统",
     "win": {
       "target": [
         {
