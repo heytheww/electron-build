@@ -1,6 +1,10 @@
 // Modules to control application life and create native browser window
 const { app, BrowserWindow, net, Menu } = require('electron')
 const path = require('path')
+const { ipcMain } = require('electron')
+
+var fs = require("fs");
+const readFile = require("util").promisify(fs.readFile);
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
@@ -64,3 +68,35 @@ app.on('activate', function () {
 
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and require them here.
+
+ipcMain.on('asynchronous-message', (event, arg) => {
+  console.log('main', arg) // 请求的消息
+
+  // 使用通信方式输送字体给前端
+  let filePath = path.join(__dirname, ".", "font/font.js");
+  let filePath2 = path.join(__dirname, ".", "font/font2.js");
+  let filePath3 = path.join(__dirname, ".", "font/font3.js");
+  console.log(filePath, "filePath")
+
+  fs.readFile(filePath, { encoding: "utf-8" }, function (err, fr) {
+    //readFile回调函数
+    // if (err) {
+    //   console.log(err);
+    // } 
+
+    fs.readFile(filePath2, { encoding: "utf-8" }, function (err, fr2) {
+      //readFile回调函数
+
+      fs.readFile(filePath3, { encoding: "utf-8" }, function (err, fr3) {
+        //readFile回调函数
+
+        event.reply('asynchronous-reply', {
+          addFont: fr,
+          addFont2: fr2,
+          addFont3: fr3,
+        })
+      })
+    })
+  })
+})
+
